@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: bench-django
+    name: bench-django-production
     runtime: python
     region: oregon
     plan: 0.5c-512mb
@@ -9,8 +9,6 @@ services:
     startCommand: gunicorn config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --access-logfile - --error-logfile -
     healthCheckPath: /health/
     envVars:
-      - key: PYTHON_VERSION
-        value: "3.12.12"
       - key: DEBUG
         value: "0"
       - key: SECRET_KEY
